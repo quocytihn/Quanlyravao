@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<header>
+  <nav>
+      <h1 style="color: #ccc;">HỆ THỐNG ĐĂNG KÍ RA VÀO DOANH TRẠI</h1>
+      <ul>
+          <li><a href="{% url 'home' %}" style="color: white; text-decoration: none;">Trang Chủ</a></li>
+          <li><a href="{% url 'login' %}" style="color: white; text-decoration: none;">Đăng Xuất</a></li>
+
+      </ul>
+  </nav>
+</header>
+
+
+<h1 style="text-align: center; color: #1a5d1a; margin-bottom: 2rem; text-transform: uppercase;">THÔNG BÁO</h1>
+<div class="card-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+   
+        
+
+</div>
+{% endblock content %}

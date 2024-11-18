@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<header>
+    <nav>
+        <h1 style="color: #ccc;">HỆ THỐNG ĐĂNG KÍ RA VÀO DOANH TRẠI</h1>
+        <ul>
+            <li><a href="{% url 'home' %}" style="color: white; text-decoration: none;">Trang Chủ</a></li>
+            <li><a href="{% url 'logout' %}" style="color: white; text-decoration: none;">Đăng Xuất</a></li>
+            <li><a href="{% url 'thongbao'%}" style="color: white; text-decoration: none;">Thông báo</a></li>
+        </ul>
+    </nav>
+</header>
+
+<h1 style="text-align: center; color: #1a5d1a; margin-bottom: 2rem; text-transform: uppercase;">Chào Mừng Đến Với Trang Chủ Hệ Thống</h1>
+<div class="card-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #1a5d1a; text-transform: uppercase;">Đăng Ký Ra Vào Doanh Trại</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+        </ul>
+        <a href="{%url 'register'%}" class="button">Đăng ký ra vào</a>
+    </div>
+
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #1a5d1a; text-transform: uppercase;">Danh sách đăng kí</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+            
+        </ul>
+        <a href="{%url 'waiting'%}" class="button">Xem kết quả</a>
+    </div>
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #e9140d; text-transform: uppercase;">Danh sách nhật ký</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+        </ul>
+        <a href="{%url 'diary_list'%}" class="button">Xem nhật ký</a>
+    </div>
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #e9140d; text-transform: uppercase;">Cập nhật nhật ký</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+            
+        </ul>
+        <a href="{%url 'diary_form'%}" class="button">Cập nhật</a>
+    </div>
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #1a5d1a   ; text-transform: uppercase;">Thông báo</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+            
+        </ul>
+        <a href="{%url 'thongbao'%}" class="button">Xem thông báo</a>
+    </div>
+    <div class="card" style="background-color: white; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); padding: 1.5rem; border: 2px solid #1a5d1a;">
+        <h2 style="color: #1a5d1a   ; text-transform: uppercase;">Nội Quy</h2>
+        <ul>
+            <li>Hệ thống quản lý ra vào doanh trại giúp bạn dễ dàng theo dõi và quản lý các hoạt động ra vào của các học viên, cán bộ trong đơn vị.</li>
+            
+        </ul>
+        <a href="{%url 'diary_form'%}" class="button">Xem nội quy</a>
+    </div>
+</div>
+{% endblock %}
