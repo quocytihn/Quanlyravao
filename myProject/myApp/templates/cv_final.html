@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Văn Hiếu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .sidebar {
+            background-color: #333;
+            color: white;
+            padding: 30px;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: block;
+            border: 5px solid #444;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.2em;
+            border-bottom: 2px solid #444;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .main-content {
+            background-color: white;
+            padding: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 10px;
+        }
+
+        .education-item, .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            grid-column: 1 / -1;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        /* CSS để giữ nguyên tỷ lệ ảnh */
+        .responsive-img {
+            max-width: 100%;  /* Giới hạn chiều rộng tối đa của ảnh */
+            height: auto;  
+            width: 250px;  /* Bạn có thể thay đổi kích thước ảnh theo ý muốn */
+            height: 250px; /* Đảm bảo chiều cao và chiều rộng giống nhau để ảnh thành hình tròn */
+            object-fit: cover; /* Đảm bảo ảnh không bị méo, vẫn giữ nguyên tỉ lệ */
+            border-radius: 50%; /* Bo tròn ảnh */   /* Tự động điều chỉnh chiều cao để giữ tỷ lệ */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>{{user_info.bidanh}}</h1>
+            <p>{{user_info.chucdanh}}</p>
+        </header>
+
+        <aside class="sidebar">
+            {% load static %}
+            <img src="{% static '3.jpg' %}" alt="ảnh đại diện" class="responsive-img">
+            <br><br>
+            <div class="section">
+                <h2 class="section-title">LIÊN HỆ</h2>
+                <div class="contact-item">{{user_info.lienhe.sdt}}</div>
+                <div class="contact-item">{{user_info.lienhe.mai}}</div>
+                <div class="contact-item">{{user_info.lienhe.diachi}}</div>
+            </div>
+
+
+            <div class="section">
+                <h2 class="section-title">HỌC VẤN</h2>
+                {% for school, details in user_info.hocvan.items %}
+                <div class="education-item">
+                    <strong>{{ school }}</strong> <!-- Tên trường -->
+                    <p>Khoá: {{ details.khoa }}</p>
+                    {% if details.chuyennganh %}
+                    <p>Chuyên ngành: {{ details.chuyennganh }}</p>
+                    {% endif %}
+                    <p>Đạt loại: {{ details.datloai }}</p>
+                </div>
+                {% endfor %}
+            </div>
+
+
+            <div class="section">
+                <h2 class="section-title">ĐIỂM MẠNH</h2>
+                <ul>
+                    {% for key, value in user_info.diemmanh.items %}
+                    <li>{{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+
+        </aside>
+
+        <main class="main-content">
+            
+            <div class="section">
+                <h2 class="section-title">THÔNG TIN CÁ NHÂN</h2>
+                <ul>
+                    {% for key, value in user_info.thongtincanhan.items %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+
+            <div class="section">
+                <h2 class="section-title">KINH NGHIỆM LÀM VIỆC</h2>
+                <ul>
+                    {% for company, details in user_info.kinhnghiemlamviec.items %}
+                    <li>
+                        <h3>{{ company }}</h3>
+                        <ul>
+                            {% for key, value in details.items %}
+                            <li><strong>{{ key }}:</strong> {{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+
+            <div class="section">
+                <h2 class="section-title">MỤC TIÊU CÔNG VIỆC</h2>
+                <ul>
+                    <li><strong>Ngắn hạn:</strong> {{ Nganhan}}</li>
+                    <li><strong>Dài hạn:</strong>
+                        <ul>
+                            {% for key, value in Daihan.items %}
+                            <li>{{ key }}: {{ value }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            
+        </main>
+
+        <footer class="footer">
+            <a href="#">Facebook</a> |
+            <a href="#">Twitter</a> |
+            <a href="#">Google</a>
+        </footer>
+    </div>
+</body>
+</html>

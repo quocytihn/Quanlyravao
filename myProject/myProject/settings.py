@@ -77,14 +77,7 @@ WSGI_APPLICATION = 'myProject.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quanlyravao',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '3306',  # Cổng mặc định cho MySQL
-    }
+   
 }
 
 # Password validation
@@ -128,3 +121,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'  #
+
+
+
+# Đường dẫn đến thư mục static
+STATIC_URL = '/static/'
+
+# Thêm thư mục chứa ảnh tĩnh
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
